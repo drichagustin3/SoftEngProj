@@ -6,4 +6,4 @@ Scrum Master: Aldrich Rodolf Agustin
 
 UI/UX Developer: 
 
-BackEnd Developer
+BackEnd Developer: Ashley Nicole Marticio
