@@ -2,16 +2,20 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const db = require('./config/db'); // Import DB pool wrapper
+const db = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Global Middleware
+// Middleware
 app.use(cors());
-app.use(express.json()); // Parses incoming JSON payload bodies into JavaScript objects (req.body)
+app.use(express.json());
 
-// Verification / Health-Check Endpoint
+// Routes
+app.use('/api/auth', authRoutes);
+
+// Health Check
 app.get('/api/health', async (req, res) => {
   try {
     const result = await db.query('SELECT NOW()');
@@ -22,10 +26,7 @@ app.get('/api/health', async (req, res) => {
     });
   } catch (err) {
     console.error('Health Check Error:', err.message);
-    res.status(500).json({
-      status: 'Error',
-      message: 'Database query failed.',
-    });
+    res.status(500).json({ status: 'Error', message: 'Database query failed.' });
   }
 });
 

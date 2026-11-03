@@ -2,25 +2,24 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-// Create a reusable connection pool using environment variables
 const pool = new Pool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   database: process.env.DB_NAME,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  max: 10, // Maximum active database clients allowed in pool
-  idleTimeoutMillis: 30000, // Close idle connections after 30 seconds
-  connectionTimeoutMillis: 2000, // Timeout request after 2 seconds if connection fails
+  max: 10,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000,
 });
 
-// Verify connection pool on initialization
-pool.connect((err, client, release) => {
+// Test connection on startup without terminating the pool
+pool.query('SELECT NOW()', (err, res) => {
   if (err) {
-    return console.error('Error connecting to PostgreSQL pool:', err.stack);
+    console.error('Error connecting to PostgreSQL pool:', err.stack);
+  } else {
+    console.log('Successfully connected to PostgreSQL database pool!');
   }
-  console.log('Successfully connected to PostgreSQL database pool!');
-  release(); // Return client back to pool
 });
 
 module.exports = {
