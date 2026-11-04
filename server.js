@@ -4,6 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 const db = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
+const authMiddleware = require('./middleware/authMiddleware');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,6 +29,13 @@ app.get('/api/health', async (req, res) => {
     console.error('Health Check Error:', err.message);
     res.status(500).json({ status: 'Error', message: 'Database query failed.' });
   }
+});
+
+app.get('/api/users/me', authMiddleware, (req, res) => {
+  res.status(200).json({
+    message: 'Protected route accessed successfully!',
+    user: req.user,
+  });
 });
 
 // Start Server
