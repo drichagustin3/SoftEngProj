@@ -13,6 +13,11 @@ const pool = new Pool({
   connectionTimeoutMillis: 2000,
 });
 
+// Idle clients can emit errors outside an individual query's promise.
+pool.on('error', (err) => {
+  console.error('Unexpected PostgreSQL pool error:', err.message);
+});
+
 // Test connection on startup without terminating the pool
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {
