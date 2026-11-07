@@ -1,9 +1,10 @@
-# SoftEngProj
+# 💻 SoftEngProject | Hope Inc. ERP
 
-Group 6 - 3 BSCS 1
+### 👥 Group 6 — 3 BSCS 1
 
-Scrum Master: Aldrich Rodolf Agustin
-
-UI/UX Developer: Ashley Nicole Marticio
-
-BackEnd Developer: Ricky Joe Sanglay
+| Team Member | Role |
+| :--- | :--- |
+| **Aldrich Rodolf Agustin** | 🥇 `Scrum Master` | 🔍 `Tester` |
+| **Ashley Nicole Marticio** | 🎨 `UI/UX Developer` |
+| **Ricky Joe Sanglay** | ⚙️ `Backend Developer` |
+| **[Name]** | 🗄️ `DB Admin` |
