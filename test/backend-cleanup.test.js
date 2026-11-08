@@ -3,6 +3,7 @@ const { EventEmitter } = require('node:events');
 const fs = require('node:fs');
 const http = require('node:http');
 const path = require('node:path');
+const { createRequire } = require('node:module');
 const { test } = require('node:test');
 const vm = require('node:vm');
 const express = require('express');
@@ -10,6 +11,7 @@ const jwt = require('jsonwebtoken');
 
 const secret = 'isolated-cleanup-test-secret';
 function load(file, mocks) {
+  const localRequire = createRequire(path.resolve(__dirname, '..', file));
   const module = { exports: {} };
   const source = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
   const execute = vm.runInThisContext(
@@ -17,7 +19,7 @@ function load(file, mocks) {
     { filename: file },
   );
   execute(module, module.exports,
-    name => Object.hasOwn(mocks, name) ? mocks[name] : require(name),
+    name => Object.hasOwn(mocks, name) ? mocks[name] : localRequire(name),
     { env: { JWT_SECRET: secret } }, { log() {}, error() {} });
   return module.exports;
 }
