@@ -1,6 +1,18 @@
 # HOPE Inc. ERP
 # Team Working Agreement, Definition of Done, and Role Guide
 
+## Team Roles & Members
+
+| Role | Username | Full Name | Responsibilities |
+| :--- | :--- | :--- | :--- |
+| **Scrum Master** | `@drichagustin3` | Aldrich Rodolf Agustin | Coordinates sprint iterations, dissects project requirements into actionable tasks, and directs team collaboration using GitHub issues and version control workflows. |
+| **UI/UX Designer** | `@AshleyNicoleMarticio30` | Ashley Nicole Marticio | Creates mobile-friendly interfaces, cohesive layouts, and engaging UI components using industry-standard design tools. |
+| **Backend Developer** | `@rickysanglay` | Ricky Joe Sanglay | Develops backend API endpoints, integrates user authentication flows, and manages database operations utilizing Supabase. |
+| **DB Admin** | `@rickysanglay` | Ricky Joe Sanglay | Architects database schemas, executes schema migrations, writes PostgreSQL scripts, and enforces Row Level Security policies. |
+| **Tester** | `@drichagustin3` | Aldrich Rodolf Agustin | Authors comprehensive test plans, runs automated testing suites, and conducts thorough defect and security vulnerability reporting. |
+
+---
+
 **Project:** HOPE Inc. Enterprise Resource Planning System  
 **Sprint:** Sprint 1  
 **Duration:** 2 Weeks  
@@ -102,10 +114,16 @@ All team members are expected to read, understand, and follow the guidelines sta
 
 **Prepared by:** Scrum Master
 
-**Date:** ____________________
+**Date:** 10 - 19 - 2026
 
 **Team Members:**
 
-1. _Aldrich Rodolf Agustin__
-2. _Ashley Nicole Marticio__
-3. _Ricky Joe Sanglay_______
+1. Aldrich Rodolf Agustin
+2. Ashley Nicole Marticio
+3. Ricky Joe Sanglay
+
+---
+## 5. Conflict Resolution & Accountability
+- **Blockers:** Raise blockers immediately in the team chat or tag the Scrum Master during standups.
+- **Disagreements:** Technical or design disagreements should be resolved via a quick team call or discussion thread; if consensus isn't reached, the Scrum Master helps arbitrate based on the Student Guide.
+- **Accountability:** Team members are responsible for updating their task status on the GitHub Project board.
