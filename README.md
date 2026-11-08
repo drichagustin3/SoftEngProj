@@ -6,5 +6,4 @@
 | :--- | :--- |
 | **Aldrich Rodolf Agustin** | 🥇 `Scrum Master` \| 🔍 `Tester` |
 | **Ashley Nicole Marticio** | 🎨 `UI/UX Developer` |
-| **Ricky Joe Sanglay** | ⚙️ `Backend Developer` |
-| **[Name]** | 🗄️ `DB Admin` |
+| **Ricky Joe Sanglay** | ⚙️ `Backend Developer` \| 🗄️ `DB Admin` |
