@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS app_user (
     role          VARCHAR(10) NOT NULL DEFAULT 'user'
                   CHECK (role IN ('user', 'admin', 'superadmin')),
     status        VARCHAR(12) NOT NULL DEFAULT 'pending'
-                  CHECK (status IN ('pending', 'active', 'blocked', 'disapproved')),
+                  CHECK (status IN ('pending', 'active', 'blocked', 'disabled', 'disapproved')),
     is_blocked    BOOLEAN NOT NULL DEFAULT FALSE,
     created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
 );

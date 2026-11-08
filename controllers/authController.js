@@ -71,6 +71,9 @@ exports.login = async (req, res) => {
     if (user.status === 'disapproved') {
       return res.status(403).json({ message: 'This registration was not approved.' });
     }
+    if (user.status !== 'active') {
+      return res.status(403).json({ message: 'An active account is required to log in.' });
+    }
 
     const isMatch = await bcrypt.compare(password, user.password_hash);
     
@@ -80,7 +83,7 @@ exports.login = async (req, res) => {
 
     const token = jwt.sign(
       { userId: user.user_id, username: user.username, role: user.role },
-      process.env.JWT_SECRET || 'fallback_secret',
+      process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN || '1d' }
     );
 

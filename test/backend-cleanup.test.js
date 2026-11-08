@@ -26,6 +26,7 @@ test('employee access, audit identity, and database failure responses', async t 
   const queries = [];
   const releases = [];
   let failure;
+  let currentAccountRole;
   const client = {
     async query(sql, params) {
       queries.push({ sql, params });
@@ -54,7 +55,12 @@ test('employee access, audit identity, and database failure responses', async t 
     './config/db': { pool },
     './routes/authRoutes': express.Router(),
     './routes/userRoutes': express.Router(),
-    './middleware/authMiddleware': load('middleware/authMiddleware.js', {}),
+    './middleware/authMiddleware': load('middleware/authMiddleware.js', {
+      '../config/db': {
+        query: async () => ({ rows: [{ user_id: 1, username: 'actual_actor',
+          role: currentAccountRole, status: 'active', is_blocked: false }] }),
+      },
+    }),
     './middleware/roleMiddleware': require('../middleware/roleMiddleware'),
   });
   const server = http.createServer(app);
@@ -62,6 +68,7 @@ test('employee access, audit identity, and database failure responses', async t 
   t.after(() => new Promise(resolve => server.close(resolve)));
   const base = `http://127.0.0.1:${server.address().port}`;
   async function request(method, url, role) {
+    currentAccountRole = role;
     const headers = role ? {
       Authorization: `Bearer ${jwt.sign({ userId: 1, username: 'actual_actor', role }, secret)}`,
     } : {};
