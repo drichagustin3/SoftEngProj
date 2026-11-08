@@ -88,6 +88,7 @@ test('S1-DEV-06 routes, active-account checks and concurrent last-superadmin pro
   });
   const auth = load('middleware/authMiddleware.js', { '../config/db': db });
   const router = load('routes/userRoutes.js', {
+    './rightsRoutes': express.Router(),
     '../controllers/userController': controller, '../middleware/authMiddleware': auth,
   });
   const app = express();

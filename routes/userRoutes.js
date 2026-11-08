@@ -1,6 +1,7 @@
 // routes/userRoutes.js
 const express = require('express');
 const router = express.Router();
+router.use(require('./rightsRoutes'));
 
 const authMiddleware = require('../middleware/authMiddleware');
 const roleMiddleware = require('../middleware/roleMiddleware');

@@ -76,6 +76,8 @@ exports.mutateUser = async (actorId, targetId, action, body) => {
       fail(400, 'Action Denied: You cannot block your own account.');
     }
 
+    // Attribute cascading rights removals to the authenticated administrator.
+    await client.query("SELECT set_config('app.username', $1, true)", [actor.username]);
     const result = action === 'delete'
       ? await client.query(`DELETE FROM app_user WHERE user_id = $1 RETURNING ${fields}`, [targetId])
       : await client.query(

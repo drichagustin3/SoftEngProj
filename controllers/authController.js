@@ -177,8 +177,8 @@ exports.resetPassword = async (req, res) => {
     const tokenResult = await db.query(
       `SELECT * FROM password_reset_token
        WHERE token_hash = $1
-         AND used = FALSE
-         AND expires_at > NOW()`,
+       AND used = FALSE
+       AND expires_at > NOW()`,
       [tokenHash]
     );
 
